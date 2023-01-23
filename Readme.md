@@ -16,3 +16,7 @@ Távoli repo összekapcsolása (PAT) :
 - git push 
 
 - pár új sor
+
+Klónozás:
+
+- git clone url
