@@ -3,7 +3,7 @@
 //START SESSION
 session_start();
 
-define('HOME_URL','http://localhost/z%C3%A1r%C3%B3/Z-r--master/');
+define('HOME_URL','http://localhost/z%C3%A1r%C3%B3/zarodolgozat/Z-r--master/');
 define('LOCALHOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');

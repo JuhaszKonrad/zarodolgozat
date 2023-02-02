@@ -41,7 +41,7 @@
                 <tr>
                     <td>Kép: </td>
                     <td>
-                        <input type="file" name="picture">
+                        <input type="file" name="image">
                     </td>
                 </tr>
 
@@ -122,7 +122,7 @@
             
             //Adatok kinyerése a formból
             $title= $_POST['title'];
-            $description = $_POST['descreption'];
+            $description = $_POST['description'];
             $price = $_POST['price'];
             $category = $_POST['category'];
 
@@ -153,11 +153,11 @@
                     $tmp = explode('.', $image_name);
                     $ext = end($tmp);
 
-                    $image_name = "Kategória_" . rand(000, 999) . '.' .$ext;
+                    $image_name = "Food-" . rand(000, 999) . '.' .$ext;
 
                     $source_path = $_FILES['image']['tmp_name'];
 
-                    $destination_path = '../képek/kategória/'.$image_name;
+                    $destination_path = '../képek/food/'.$image_name;
 
                     $upload = move_uploaded_file($source_path, $destination_path);
 
@@ -176,19 +176,19 @@
 
 
             //Insert
-            $sql2 = "INSERT INTO ételek SET cím= '$title', leírás ='$description', ár = $price, kép_név = '$image_name', kategória_id =$category, kiemelt = '$featured', aktív = '$active' ";
+            $sql2 = "INSERT INTO étel SET cím= '$title', leírás ='$description', ár = $price, kép_név = '$image_name', kategória_id =$category, kiemelt = '$featured', aktív = '$active' ";
 
-            $er2 = mysqli_query($kapcs,$sql);
+            $er2 = mysqli_query($kapcs,$sql2);
 
             if($er2 == true){
                 $_SESSION['add'] = "<div class='success'>Hozzáadás Sikeres! </div>";
                 //Redirect
-                header('location:'.HOME_URL.'admin/food-hozzaadas.php');
+                header('location:'.HOME_URL.'admin/food-kezeles.php');
 
             }else{
                 $_SESSION['add'] = "<div class='error'>Hozzáadás Sikertelen! </div>";
                 //Redirect
-                header('location:'.HOME_URL.'admin/food-hozzaadas.php');
+                header('location:'.HOME_URL.'admin/food-kezeles.php');
             }            
 
         }
