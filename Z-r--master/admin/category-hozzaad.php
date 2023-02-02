@@ -43,7 +43,7 @@
 
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="submit" value="Kategória Hozzáadás" class="btn-secondary">
+                        <input type="submit" name="submit" value="Hozzáadás" class="btn-secondary">
                     </td>
                 </tr>
 
@@ -87,15 +87,22 @@
                     //Kiterjesztés lekérése
                     $ext = end(explode('.', $image_name));
 
-                    //Példa: Kategória_123.jpg
-                    $image_name = "Kategória_" . rand(000, 999) . '.' . $ext;
+                    /*if(file_exists('../képek/kategória'.$_FILES['image']['name'])){
+                        $_SESSION['img_already_exist'] = "<div class='error'>Létezik már kategória ilyen képpel!</div>";
+                        header('location:' . HOME_URL . 'admin/category-hozzaad.php');
+                        die();
+                    } else {*/
 
-                    $source_path = $_FILES['image']['tmp_name'];
+                        //Példa: Kategória_123.jpg
 
-                    $destination_path = '../képek/kategória/' . $image_name;
+                        $image_name = "Kategória_" . rand(000, 999) . '.' . $ext;
+                        
+                        $source_path = $_FILES['image']['tmp_name'];
 
-                    $upload = move_uploaded_file($source_path, $destination_path);
+                        $destination_path = '../képek/kategória/' . $image_name;
 
+                        $upload = move_uploaded_file($source_path, $destination_path);
+                    
                     //Sikeres-e a feltöltés
                     if ($upload == false) {
                         $_SESSION['upload'] = "<div class='error'>Kép Feltöltése Sikertelen!</div>";
@@ -109,6 +116,7 @@
 
                 //Ha nincs mit feltölteni akkor üresen hagyja
                 $kép_név = "";
+
             }
 
 

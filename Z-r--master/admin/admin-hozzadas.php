@@ -32,7 +32,7 @@
 
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="submit" value="Admin Hozzáadás" class="btn-secondary">
+                        <input type="submit" name="submit" value="Hozzáadás" class="btn-secondary">
                     </td>
                 </tr>
 
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     $teljesnév = $_POST['teljesnév'];
     $felhasználónév = $_POST['felhasználónév'];
     $jelszó = md5($_POST['jelszó']);
-
+    
     $sql = "INSERT INTO admin SET 
             teljesnév ='$teljesnév',
             felhasználónév ='$felhasználónév',
