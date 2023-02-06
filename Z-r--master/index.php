@@ -1,60 +1,49 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="képek/favicon-32x32.png">
-    <title>Étel Rendelés</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <!-- Navbar-->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" title="Logo">
-                    <img src="képek/logo.png" alt="Logo" class="img-responsive">
-                </a>
-            </div>
-
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Főoldal</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Kategóriák</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Ételek</a>
-                    </li>
-                    <li>
-                        <a href="#">Kapcsolat</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-    </section>
-
-    <!-- Food Search -->
+    <?php include('partials-frontend/menu.php')?>
+    <!-- Food  Search  -->
     <section class="food-search text-center">
         <div class="container">
-            
-            <h2>Ételek <a href="#" class="text-white">"Kategóriánként"</a></h2>
-
+            <form action="">
+                <input type="search" name="search" placeholder="Étel keresése">
+                <input type="submit" name="submit" value="Keresés" class="btn btn-primary">
+            </form>
         </div>
     </section>
 
+    <!-- Categories  -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="text-center">Kategóriák</h2>
 
+            <a href="#">
+            <div class="box-3 float-container">
+                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+                <h3 class="float-text text-white">Pizza</h3>
+            </div></a>
+
+            <a href="#">
+            <div class="box-3 float-container">
+                <img src="képek/burger2.jpg" alt="Burger" class="img-responsive img-curve">
+                <h3 class="float-text text-white">Burger</h3>
+            </div></a>
+
+            <a href="#">
+            <div class="box-3 float-container">
+                <img src="képek/teszta.jpg" alt="Pizza" class="img-responsive img-curve">
+                <h3 class="float-text text-white">Tészta</h3>
+            </div></a>
+
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </section>
 
     <!-- Food  Menu  -->
     <section class="food-menu">
         <div class="container">
-            <h2 class="text-center">Ajánlatunk</h2>
+            <h2 class="text-center">Ájánlatunk</h2><br>
 
+            
             <div class="food-menu-box">
                 <div class="food-menu-img">
                     <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
@@ -133,42 +122,9 @@
                 <div class="clearfix"></div>
             </div>
 
-
-
+           
             <div class="clearfix"></div>
-
-            
-
-        </div>
-
-    </section>
-
-
-    <!-- Social Media  -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/null/facebook-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/null/instagram-new--v1.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/null/twitter--v1.png"/></a>
-                </li>
-            </ul>
-
         </div>
     </section>
 
-    <!-- Footer  -->
-    <section class="footer">
-        <div class="container">
-            <p class="text-center">Minden jog fenntartva. Tervezte <a href="#">Juhász Konrád</a></p>
-            
-        </div>
-    </section>
-
-</body>
-</html>
+    <?php include('partials-frontend/footer.php')?>

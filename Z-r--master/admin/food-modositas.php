@@ -55,7 +55,15 @@
             <tr>
                 <td>Jelenlegi kép: </td>
                 <td>
-                    kép helye
+                    <?php if($currentImage==""){
+                        echo "<div class='error'>Nincs Elérhető Kép!</div>";
+                    }else{
+                        ?>
+                        <img src="<?php echo HOME_URL; ?>képek/food/<?php echo $currentImage?>" alt="<?php echo $currentImage?>" width="100px">
+                        <?php
+                        
+                    }
+                    ?>
                 </td>
             </tr>
 
@@ -83,8 +91,9 @@
                             while($row=mysqli_fetch_assoc($er)){
                                 $category_title =$row['cím'];
                                 $category_id =$row['id'];
-
-                                echo "<option vale='$category_id'>$category_title</option>";
+                                ?>
+                                <option <?php if($current_category == $category_id){echo "Selected";} ?> value="<?php echo $category_id;?>"><?php echo $category_title?></option>
+                                <?php
                             }
                         }else{
                             echo "<option value='0'>Kategória nem elérhető!</option>";
@@ -100,27 +109,91 @@
             <tr>
                 <td>Kiemelt:</td>
                 <td>
-                    <input type="radio" name="featured" value="Igen">Igen
-                    <input type="radio" name="featured" value="Nem">Nem
+                    <input <?php if($featured=="Igen"){ echo "checked";}?> type="radio" name="featured" value="Igen">Igen
+                    <input <?php if($featured=="Nem"){ echo "checked";}?> type="radio" name="featured" value="Nem">Nem
                 </td>
             </tr>
 
             <tr>
                 <td>Aktív:</td>
                 <td>
-                    <input type="radio" name="active" value="Igen">Igen
-                    <input type="radio" name="active" value="Nem">Nem
+                    <input <?php if($active=="Igen"){ echo "checked";}?> type="radio" name="active" value="Igen">Igen
+                    <input <?php if($active=="Nem"){ echo "checked";}?> type="radio" name="active" value="Nem">Nem
                 </td>
             </tr>
 
             <tr>
                 <td>
+                    <input type="hidden" name="id" value="<?php echo $id;?>">
+                    <input type="hidden" name="current_image" value="<?php echo $currentImage; ?>">
                     <input type="submit" name="submit" value="Módosítás" class="btn-secondary">
                 </td>
             </tr>
         </table>
 
         </form>
+        <?php
+        
+        if(isset($_POST['submit'])){
+          
+            $id = $_POST['id'];
+            $title = $_POST['title'];
+            $description= $_POST['description'];
+            $price = $_POST['price'];
+            $currentImage = $_POST['current_image'];
+            $category = $_POST['category'];
+            $featured = $_POST['featured'];
+            $active = $_POST['active'];
+
+            if(isset($_FILES['image']['name'])){
+                $image_name = $_FILES['image']['name'];
+                if($image_name!=""){
+                    $tmp = explode(".",$image_name);
+                    $ext = end($tmp);
+                    $image_name = "Food-" . rand(000, 999) . '.' .$ext;
+
+                    $source_path = $_FILES['image']['tmp_name'];
+
+                    $destination_path = '../képek/food/'.$image_name;
+
+                    $upload = move_uploaded_file($source_path, $destination_path);
+                    if($upload==false){
+                        $_SESSION['upload'] = "<div class='error'>Kép Feltöltése Sikertelen!</div>";
+                        header('location:'.HOME_URL.'admin/food-kezeles.php');
+                        die();
+                    }
+
+                    if($currentImage!=""){
+                        $path = "../képek/food/".$currentImage;
+
+                        $remove = unlink($path);
+                        if($remove == false){
+                            $_SESSION['remove'] = "<div class='error'>Kép Eltávolítása Sikertelen!</div>";
+                            header('location:'.HOME_URL.'admin/food-kezeles.php');
+                            die();
+                        }
+                    }
+                }   
+
+            }else{
+                $image_name = $currentImage;
+            }
+
+            $sql3 = "UPDATE étel SET cím='$title', leírás='$description', ár=$price, kép_név='$image_name', kategória_id='$category', kiemelt='$featured', aktív='$active' WHERE id=$id ";
+
+            $er3 =mysqli_query($kapcs,$sql3);
+            
+            if($er3==true){
+                $_SESSION['update'] ="<div class='success'>Sikeres Módosítás!</div>";
+                header('location:'.HOME_URL.'admin/food-kezeles.php');
+            }else{
+                $_SESSION['update'] ="<div class='error'>Sikertelen Módosítás!</div>";
+                header('location:'.HOME_URL.'admin/food-kezeles.php');
+            }
+            
+        }
+        
+        ?>
 
     </div>
 </div>

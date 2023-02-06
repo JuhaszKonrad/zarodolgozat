@@ -1,90 +1,20 @@
-<!DOCTYPE html>
-<html lang="hu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="képek/favicon-32x32.png">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Étel rendelés</title>
-</head>
-
-<body>
-
-    <!-- Navbar  -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="képek/logo.png" alt="Logo" class="img-responsive">
-            </div>
-
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Főoldal</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Kategóriák</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Ételek</a>
-                    </li>
-                    <li>
-                        <a href="#">Kapcsolat</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix">
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Food  Search  -->
+<?php include('partials-frontend/menu.php')?>
+    <!-- Categories -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="">
-                <input type="search" name="search" placeholder="Étel keresése">
-                <input type="submit" name="submit" value="Keresés" class="btn btn-primary">
-            </form>
+            
+            <h2>Keresési eredmény <a href="#" class="text-white">""</a></h2>
+
         </div>
     </section>
+    
 
-    <!-- Categories  -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="text-center">Kategóriák</h2>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Pizza</h3>
-            </div></a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger2.jpg" alt="Burger" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Burger</h3>
-            </div></a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Pizza" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Tészta</h3>
-            </div></a>
-
-            <div class="clearfix">
-
-            </div>
-        </div>
-    </section>
 
     <!-- Food  Menu  -->
     <section class="food-menu">
         <div class="container">
-            <h2 class="text-center">Ájánlatunk</h2><br>
+            <h2 class="text-center">Ájánlatunk</h2>
 
             
             <div class="food-menu-box">
@@ -169,33 +99,6 @@
             <div class="clearfix"></div>
         </div>
     </section>
+    
 
-    <!-- Social Media  -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/null/facebook-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/null/instagram-new--v1.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/null/twitter--v1.png"/></a>
-                </li>
-            </ul>
-
-        </div>
-    </section>
-
-    <!-- Footer  -->
-    <section class="footer">
-        <div class="container">
-            <p class="text-center">Minden jog fenntartva. Tervezte <a href="#">Juhász Konrád</a></p>
-            
-        </div>
-    </section>
-
-</body>
-
-</html>
+    <?php include('partials-frontend/footer.php')?>

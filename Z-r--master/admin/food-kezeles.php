@@ -29,6 +29,15 @@
                 echo $_SESSION['unauthorized-access'];
                 unset($_SESSION['unauthorized-access']);
             }
+
+            if(isset($_SESSION['upload'])){
+                echo $_SESSION['upload'];
+                unset($_SESSION['upload']);
+            }
+            if(isset($_SESSION['update'])){
+                echo $_SESSION['update'];
+                unset($_SESSION['update']);
+            }
             
             ?>
 
