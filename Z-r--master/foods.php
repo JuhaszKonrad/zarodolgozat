@@ -15,84 +15,53 @@
         <div class="container">
             <h2 class="text-center">Ájánlatunk</h2>
 
+            <?php 
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            $sql = "SELECT * FROM étel WHERE aktív = 'Igen'";
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            $er = mysqli_query($kapcs,$sql);
+            $count = mysqli_num_rows($er);
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            if($count > 0){
+                while($row=mysqli_fetch_assoc($er)){
+                    $id = $row['id'];
+                    $title = $row['cím'];
+                    $description = $row['leírás'];
+                    $price = $row['ár'];
+                    $image_name = $row['kép_név'];
+                    ?>
+                    <div class="food-menu-box">
+                        <div class="food-menu-img">
+                            <?php
+                            if($image_name==""){
+                                echo "<div class='error'>Kép nem elérhető!</div>";
+                            }else{
+                                ?>
+                                 <img src="<?php echo HOME_URL;?>képek/food/<?php echo $image_name?>" alt="<?php $title?>" class="img-responsive img-curve">
+                                <?php
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+                            }
+                            ?>
+                        </div>
+                        <div class="food-menu-desc">
+                            <h4><?php echo $title;?></h4>
+                            <p class="food-ar"><?php echo $price;?></p>
+                            <p class="food-leiras"><?php echo $description;?></p> <br>
+                            <a href="<?php echo HOME_URL;?>order.php" class="btn btn-primary">Kosárba</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+                    <?php
+                }
+            }else{
+                echo "<div class='error'>Nem elérhető!</div>";
+            }
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            
+            
+            ?>
+            
 
 
             <div class="clearfix"></div>

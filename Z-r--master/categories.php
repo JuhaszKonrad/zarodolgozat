@@ -4,100 +4,44 @@
         <div class="container">
             <h2 class="text-center">Ajánlatunk</h2>
 
-            <a href="category-foods.html">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+            <?php
+            
+            $sql = "SELECT * FROM kategória WHERE aktív = 'Igen' ";
 
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
+            $er = mysqli_query($kapcs,$sql);
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger.jpg" alt="Burger" class="img-responsive img-curve">
+            $count = mysqli_num_rows($er);
 
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
+            if($count > 0){
+                while($row=mysqli_fetch_assoc($er)){
+                    $id=$row['id'];
+                    $title=$row['cím'];
+                    $image_name = $row['kép_név'];
+                    ?>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Tészta" class="img-responsive img-curve">
+                    <a href="category-foods.html">
+                    <div class="box-3 float-container">
+                        <?php
+                         if($image_name==""){
+                            echo "<div class='error'>Kép nem elérhető!</div>";
+                        }else{
+                            ?>
 
-                <h3 class="float-text text-white">Tészta</h3>
-            </div>
-            </a>
+                            <img src="<?php HOME_URL;?>képek/kategória/<?php echo $image_name;?>" alt="<?php echo $title?>" class="img-responsive img-curve">
+                            <?php
+                        }
+                        ?>
+                        <h3 class="float-text text-white"><?php echo $title?></h3>
+                    </div>
+                    </a>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+                    <?php
+                }
+            }
+            
+            ?>
 
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger.jpg" alt="Burger" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Tészta" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Tészta</h3>
-            </div>
-            </a>
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger.jpg" alt="Burger" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Tészta" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Tészta</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger.jpg" alt="Burger" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Tészta" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Tészta</h3>
-            </div>
-            </a>
+            
 
             
 

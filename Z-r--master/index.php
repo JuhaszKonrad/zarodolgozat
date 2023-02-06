@@ -14,23 +14,53 @@
         <div class="container">
             <h2 class="text-center">Kategóriák</h2>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Pizza</h3>
-            </div></a>
+            <?php
+            
+            //SQL
+            $sql = "SELECT * FROM kategória WHERE kiemelt='Igen' AND aktív='Igen' LIMIT 3";
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/burger2.jpg" alt="Burger" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Burger</h3>
-            </div></a>
+            $er = mysqli_query($kapcs,$sql);
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="képek/teszta.jpg" alt="Pizza" class="img-responsive img-curve">
-                <h3 class="float-text text-white">Tészta</h3>
-            </div></a>
+            //Sorok megszámlálása
+            $count = mysqli_num_rows($er);
+
+            if($count>0){
+                while($row=mysqli_fetch_assoc($er)){
+                    $id = $row['id'];
+                    $title = $row['cím'];
+                    $image_name = $row['kép_név'];
+                    ?>
+                    
+                    <a href="#">
+                    <div class="box-3 float-container">
+                        <?php
+
+                        //Elérhető-e a kép
+                        if($image_name==""){
+                            echo "<div class='error'>Kép nem elérhető!</div>";
+                        }else{
+                            ?>
+
+                            <img src="<?php HOME_URL;?>képek/kategória/<?php echo $image_name;?>" alt="" class="img-responsive img-curve">
+                            <?php
+                        }
+                        
+                        ?>
+                        
+                        <h3 class="float-text text-white"><?php echo $title;?></h3>
+                    </div></a>
+
+
+
+                    <?php
+                }
+            }else{
+                echo "<div class='error'>Nincs Elérhető Kategória!</div>";
+            }
+
+ 
+            ?>
+
 
             <div class="clearfix">
 
@@ -43,84 +73,62 @@
         <div class="container">
             <h2 class="text-center">Ájánlatunk</h2><br>
 
+            <?php
             
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            $sql2 = "SELECT * FROM étel WHERE kiemelt='Igen' AND aktív='Igen' LIMIT 6";
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            $er2 = mysqli_query($kapcs,$sql2);
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            $count2 = mysqli_num_rows($er2);
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            if($count2>0){
+                while($row=mysqli_fetch_assoc($er2)){
+                    $id = $row['id'];
+                    $title=$row['cím'];
+                    $price = $row['ár'];
+                    $description = $row['leírás'];
+                    $image_name = $row['kép_név'];
+                    ?>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+                    <div class="food-menu-box">
+                        <div class="food-menu-img">
+                            <?php
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="képek/pizza.jpg" alt="Songoku Pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Songoku Pizza</h4>
-                    <p class="food-ar">2000Ft</p>
-                    <p class="food-leiras">Paradicsomos alap, Sonka, Gomba, Kukorica, Sajt</p> <br>
-                    <a href="" class="btn btn-primary">Kosárba</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+                            if($image_name==""){
+                                echo "<div class='error'>Kép nem elérhető!</div>";
+                            }else{
+                                ?>
+                                <img src="<?php echo HOME_URL;?>képek/food/<?php echo $image_name?>" alt="Songoku Pizza" class="img-responsive img-curve">
+                                <?php
+                            }
+
+
+                            ?>
+                            
+                        </div>
+                        <div class="food-menu-desc">
+                            <h4><?php echo $title?></h4>
+                            <p class="food-ar"><?php echo $price?> Ft</p>
+                            <p class="food-leiras"><?php echo $description?></p> <br>
+                            <a href="order.php" class="btn btn-primary">Kosárba</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+
+                    <?php
+
+                }
+            }else{
+                echo "<div class='error'>Nem elérhető!</div>";
+            }
+
+            
+            ?>
+
+            
+           
 
            
             <div class="clearfix"></div>

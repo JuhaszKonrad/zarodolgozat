@@ -23,13 +23,13 @@
             <div class="menu text-right">
                 <ul>
                     <li>
-                        <a href="index.php">Főoldal</a>
+                        <a href="<?php echo HOME_URL;?>">Főoldal</a>
                     </li>
                     <li>
-                        <a href="categories.php">Kategóriák</a>
+                        <a href="<?php echo HOME_URL;?>categories.php">Kategóriák</a>
                     </li>
                     <li>
-                        <a href="foods.php">Ételek</a>
+                        <a href="<?php echo HOME_URL;?>foods.php">Ételek</a>
                     </li>
                     <li>
                         <a href="#">Kapcsolat</a>

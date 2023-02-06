@@ -173,7 +173,9 @@
                             die();
                         }
                     }
-                }   
+                }else{
+                    $image_name=$currentImage;
+                }
 
             }else{
                 $image_name = $currentImage;
