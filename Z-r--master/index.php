@@ -2,7 +2,7 @@
     <!-- Food  Search  -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="">
+            <form action="<?php echo HOME_URL;?>food-search.php" method="POST">
                 <input type="search" name="search" placeholder="Étel keresése">
                 <input type="submit" name="submit" value="Keresés" class="btn btn-primary">
             </form>

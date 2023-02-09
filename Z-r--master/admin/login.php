@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
         header('location:' . HOME_URL . 'admin/');
     }else{
         //Felhasználó nem létezik és sikertelen a bejelentkezés
-                $_SESSION['pwd-not-match'] = "<div class='error '>Jelszó nem egyezik</div>";
+        $_SESSION['pwd-not-match'] = "<div class='error '>Jelszó nem egyezik</div>";
         $_SESSION['login'] = "<div class='error text-center'>Helytelen Felhasználónév/Jelszó!</div>";
         header('location:' . HOME_URL . 'admin/login.php');
     }
