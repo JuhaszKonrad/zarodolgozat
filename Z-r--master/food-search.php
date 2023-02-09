@@ -18,11 +18,11 @@
 
             <?php 
             
-            $search = $_POST['search'];
+            $search = mysqli_real_escape_string($kapcs,$_POST['search']);
             
             $sql = "SELECT * FROM étel where cím LIKE '%$search%' OR leírás LIKE '%$search% ";
 
-            $er = mysqli_result($kapcs,$sql);
+            $er = mysqli_query($kapcs,$sql);
 
             //Sorok megszámlálása
             $count = mysqli_num_rows($er);
